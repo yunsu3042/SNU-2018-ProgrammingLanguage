@@ -1,0 +1,4 @@
+let x := 5 in
+let y := 5 in
+let z := 10 in
+write x + y - z

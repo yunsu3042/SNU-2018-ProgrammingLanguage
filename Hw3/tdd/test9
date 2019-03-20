@@ -1,0 +1,5 @@
+let c := 0 in
+let proc f (x, y) = x + y + c in
+let c := -2 in
+let result := f(1, 1) + c in
+write result

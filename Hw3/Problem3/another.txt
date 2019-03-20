@@ -1,0 +1,60 @@
+let proc leaf(n) = {val := n, left := {}, right := {}} in
+let proc makeLtree (n, tree) = {val := n, left := tree, right:= {}} in
+let proc makeRtree (n, tree) = {val := n, left := {}, right := tree} in
+let proc makeTree (n, lt, rt) = {val := n, left := lt, right := rt} in
+
+let proc isEmpty (tree) = if tree = {} then true else false in
+let proc rTree (tree) = tree.right in
+let proc lTree (tree) = tree.left in
+let proc nodeVal (tree) = tree.val in
+
+let proc dft (tree) =(
+  if isEmpty(tree)then ()
+    else(
+      write nodeVal(tree);
+      let cf1 := (isEmpty (tree.left) = false) in
+      let cf2 := (isEmpty (tree.right) = false) in
+      if cf1 then dft(tree.left) else ();
+      if cf2 then dft(tree.right) else ()
+    )
+  ) in
+
+let proc printGivenLevel (root, level) = (
+  if level = 1
+  then write nodeVal(root)
+  else (
+    let cf1 := (isEmpty (root.left) = false) in
+    let cf2 := (isEmpty (root.right) = false) in
+    if cf1 then printGivenLevel(root.left, level - 1) else ();
+    if cf2 then printGivenLevel(root.right, level - 1) else ()
+  )
+)in
+
+let proc aux (tree, height, idx) = (
+  if (idx < height + 1)
+  then (
+    printGivenLevel(tree, idx);
+    aux (tree, height, idx + 1)
+  )
+  else ()
+) in
+
+let proc max (a, b) = (
+  if (a < b) then b else a
+) in
+
+let proc getHeight (tree) = (
+  if isEmpty (tree) then 0
+  else (
+    let lHeight := (getHeight(tree.left) + 1) in
+    let rHeight := (getHeight(tree.right) + 1) in
+    max (lHeight, rHeight)
+  )
+) in
+
+let proc bft (tree) = (
+  let height := getHeight(tree) in
+  aux (tree, height, 1)
+) in
+
+2018

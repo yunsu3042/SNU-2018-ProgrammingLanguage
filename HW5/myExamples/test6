@@ -1,0 +1,16 @@
+(* My test case 6 : Duplicated For loop *)
+
+let s := 0 in
+let i := 0 in
+let j := 0 in
+let n := 9 in
+for i := 0 to n do (
+  s := i * 10 ;
+  write s;
+  for j := 1 to n do (
+    write  s + j
+  )
+)
+
+
+(* Output : reads in n and output the summation from 1 to n *)

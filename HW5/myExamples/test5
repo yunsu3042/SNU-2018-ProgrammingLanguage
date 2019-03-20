@@ -1,0 +1,15 @@
+(* My test case 4 : While *)
+
+let i := 100 in
+while (0 < i) do (
+  let j:= 9 in
+  write i;
+  i := i - 10;
+  while(0 < j) do (
+    write i + j;
+    j := j - 1
+  )
+)
+
+
+(* Output : prints out "\n" *)
